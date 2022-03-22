@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>السيد حسين </title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="" />
+  </head>
+
+  <body>
+    <div class="container">
+      <fieldset>
+        <legend>
+          <h2>المدخلات</h2>
+        </legend>
+
+        <div id="inputFields" class="inputFields">
+          <h3>
+            <label for="mainMony">الأساسي :</label>
+          </h3>
+          <input type="number" name="mainMony" id="mainMony" min="1" max="20000" placeholder="الأساسي" required />
+          <h3>
+            <label for="dayas">الأيام : </label>
+          </h3>
+          <input type="number" name="dayas" id="dayas" min="1" max="365" placeholder="الأيام" required />
+          <button id="calc" class="btn " type="submit">أحسب</button>
+        </div>
+      </fieldset>
+      <fieldset class="incomeField">
+        <legend>
+          <h2>المستحقات </h2>
+        </legend>
+        <div id="incomes" class="incomes">
+          <ul>
+            <li>
+              <h3>10% :</h3>
+              <p id="showTotallAll" class="showTotallAll"></p>
+            </li>
+          </ul>
+        </div>
+      </fieldset>
+      <fieldset class="totallAllField">
+        <legend>
+          <h2>الكلي </h2>
+        </legend>
+        <div id="totallAll" class="totallAll">
+          <h3>الكلي :</h3>
+          <p id="showTotallAll" class="showTotallAll"></p>
+        </div>
+      </fieldset>
+
+    </div>
+    <script src="app.js"></script>
+  </body>
+
+</html>
