@@ -6,29 +6,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>السيد حسين </title>
-    <link rel="stylesheet" href="./style.css" />
     <link rel="icon" href="" />
   </head>
 
   <body>
-    <div class="container">
-      <fieldset>
-        <legend>
-          <h2>المدخلات</h2>
-        </legend>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: large;
+      }
 
-        <div id="inputFields" class="inputFields">
-          <h3>
-            <label for="mainMony">الأساسي :</label>
-          </h3>
-          <input type="number" name="mainMony" id="mainMony" min="1" max="20000" placeholder="الأساسي" required />
-          <h3>
-            <label for="dayas">الأيام : </label>
-          </h3>
-          <input type="number" name="dayas" id="dayas" min="1" max="365" placeholder="الأيام" required />
-          <button id="calc" class="btn " type="submit">أحسب</button>
-        </div>
-      </fieldset>
+      body {
+        padding: 2%;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .right {
+        width: 20%;
+      }
+
+      .incomeField,
+      .outcomeField {
+        width: 30%;
+      }
+
+      fieldset {
+        display: flex;
+        justify-content: center;
+        padding: 5%;
+      }
+
+      .ress {
+        display: flex;
+      }
+    </style>
+    <div class="container">
+      <div class="right">
+        <fieldset>
+          <legend>
+            <h2>المدخلات</h2>
+          </legend>
+
+          <div id="inputFields" class="inputFields">
+            <h3>
+              <label for="mainMony">الأساسي :</label>
+            </h3>
+            <input type="number" name="mainMony" id="mainMony" min="1" max="20000" placeholder="الأساسي" value="256"
+              required />
+            <h3>
+              <label for="days">الأيام : </label>
+            </h3>
+            <input type="number" name="days" id="days" min="1" max="365" placeholder="الأيام" value="7" required />
+            <button id="calc" class="btn " type="submit">أحسب</button>
+          </div>
+        </fieldset>
+        <fieldset class="totallAllField">
+          <legend>
+            <h2>الكلي </h2>
+          </legend>
+          <div id="totalAll" class="totalAll">
+            <h3>الكلي :</h3>
+            <p id="showTotalAll" class="showTotalAll"></p>
+          </div>
+        </fieldset>
+      </div>
       <fieldset class="incomeField">
         <legend>
           <h2>المستحقات </h2>
@@ -36,24 +94,140 @@
         <div id="incomes" class="incomes">
           <ul>
             <li>
-              <h3>10% :</h3>
-              <p id="showTotallAll" class="showTotallAll"></p>
+              <h3>م :</h3>
+              <p id="M" class="M"></p>
+            </li>
+            <li>
+              <h3>12% :</h3>
+              <p id="twelve1" class="twelve"></p>
+            </li>
+            <li>
+              <h3>1% :</h3>
+              <p id="one" class="one"></p>
+            </li>
+            <li>
+              <h3>3% :</h3>
+              <p id="three1" class="three"></p>
+            </li>
+            <li>
+              <h3>1.25% :</h3>
+              <p id="oneTowFive1" class="oneTowFive"></p>
             </li>
           </ul>
+          <div class="ress">
+
+            <h3>أجمالى الأستحقاقات :</h3>
+            <p id="incomeTotal" class="incomeTotal"></p>
+          </div>
         </div>
       </fieldset>
-      <fieldset class="totallAllField">
+      <fieldset class="outcomeField">
         <legend>
-          <h2>الكلي </h2>
+          <h2>المستقطعات </h2>
         </legend>
-        <div id="totallAll" class="totallAll">
-          <h3>الكلي :</h3>
-          <p id="showTotallAll" class="showTotallAll"></p>
+        <div id="outcomes" class="outcomes">
+          <ul>
+            <li>
+              <h3>12% :</h3>
+              <p id="twelve2" class="twelve"></p>
+            </li>
+            <li>
+              <h3>9% :</h3>
+              <p id="nine" class="nine"></p>
+            </li>
+            <li>
+              <h3>3% :</h3>
+              <p id="three2" class="three"></p>
+            </li>
+            <li>
+              <h3>3% :</h3>
+              <p id="three3" class="three"></p>
+            </li>
+            <li>
+              <h3>1.25% :</h3>
+              <p id="oneTowFive2" class="oneTowFive"></p>
+            </li>
+            <li>
+              <h3>2% :</h3>
+              <p id="two" class="two"></p>
+            </li>
+            <li>
+              <h3>نسبي :</h3>
+              <p id="rel" class="rel"></p>
+            </li>
+          </ul>
+          <div class="ress">
+            <h3>أجمالى الستقطاعات :</h3>
+            <p id="outcomeTotal" class="outcomeTotal"></p>
+          </div>
         </div>
       </fieldset>
 
     </div>
-    <script src="app.js"></script>
+    <script>let calc = document.getElementById("calc");
+      let m = document.getElementById("M");
+      let twelve1 = document.getElementById("twelve1");
+      let twelve2 = document.getElementById("twelve2");
+      let one = document.getElementById("one");
+      let three1 = document.getElementById("three1");
+      let three2 = document.getElementById("three2");
+      let three3 = document.getElementById("three3");
+      let oneTowFive1 = document.getElementById("oneTowFive1");
+      let oneTowFive2 = document.getElementById("oneTowFive2");
+      let incomeTotal = document.getElementById("incomeTotal");
+      let nine = document.getElementById("nine");
+      let two = document.getElementById("two");
+      let rel = document.getElementById("rel");
+      let outcomeTotal = document.getElementById("outcomeTotal");
+      let showTotalAll = document.getElementById("showTotalAll");
+
+      function getFlooredFixed(v, d) {
+        return (Math.floor(v * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d);
+      }
+      calc.addEventListener("click", () => {
+        let base = Number(document.getElementById("mainMony").value);
+        let days = Number(document.getElementById("days").value);
+        let calcM = Number(getFlooredFixed(base * 0.05 * days, 2));
+        let calcTwelve = Number(getFlooredFixed(calcM * 0.12, 2));
+        let calcOne = Number(getFlooredFixed(calcM * 0.01, 2));
+        let calcThree = Number(getFlooredFixed(calcM * 0.03, 2));
+        let calcOneTowFive = Number((calcM * 0.0125).toFixed(2));
+        let calcNine = Number((calcM * 0.09).toFixed(2));
+        let calcTwo = Number((calcM * 0.02).toFixed(2));
+        let calcIncomeTotal = (
+          calcM +
+          calcTwelve +
+          calcOne +
+          calcThree +
+          calcOneTowFive
+        ).toFixed(2);
+        let calcOutComeTotalTest =
+          calcTwelve + calcNine + calcThree + calcThree + calcOneTowFive + calcTwo;
+        let calcRel = (
+          (((calcIncomeTotal - calcOutComeTotalTest).toFixed(2) * 100) % 5) / 100 +
+          1
+        ).toFixed(2);
+        let calcOutComeTotal = (
+          Number(calcOutComeTotalTest) + Number(calcRel)
+        ).toFixed(2);
+        let calcShowTotalAll = calcIncomeTotal - calcOutComeTotal;
+        m.innerHTML = calcM;
+        twelve1.innerHTML = calcTwelve;
+        twelve2.innerHTML = calcTwelve;
+        one.innerHTML = calcOne;
+        three1.innerHTML = calcThree;
+        three2.innerHTML = calcThree;
+        three3.innerHTML = calcThree;
+        oneTowFive1.innerHTML = calcOneTowFive;
+        oneTowFive2.innerHTML = calcOneTowFive;
+        incomeTotal.innerHTML = calcIncomeTotal;
+        nine.innerHTML = calcNine;
+        two.innerHTML = calcTwo;
+        rel.innerHTML = calcRel;
+        outcomeTotal.innerHTML = calcOutComeTotal;
+        showTotalAll.innerHTML = calcShowTotalAll.toFixed(2);
+      });
+    </script>
   </body>
 
 </html>
